@@ -1,0 +1,33 @@
+
+
+.btn-main:hover {
+    border: black 1px solid;
+}
+
+.admin-btn {
+    font-size: 70%;
+    margin-top: 10px;
+    font-size: 1.3rem;
+}
+
+.admin-container {
+    float: right;
+}
+
+.incorrect {
+    color: red;
+}
+
+#adminPasscode {
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+@media only screen and (max-width: 1023px) {
+
+    .btn-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+}

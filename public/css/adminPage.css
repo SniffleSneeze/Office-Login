@@ -1,0 +1,27 @@
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+.hideElement {
+    display: none;
+}
+
+.hideRow {
+    display: none;
+}
+
+.btn-pagination {
+    margin: 10px;
+    border: #C0C0C0 1px solid;
+    font-size: 1.5rem;
+}
+
+.btn-container-pagination {
+    display: flex;
+    justify-content: center;
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require 'partials/layout/head.phtml'; ?>
+    <link rel="stylesheet" href="css/homePage.css" type="text/css">
+
+
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<div class="admin-container">
+    <button type="button" class="btn btn-secondary btn-lg active admin-btn" data-toggle="modal" data-target="#adminModal">
+        Admin Login
+    </button>
+    <?php if (isset($_GET['invalidPasscode'])){echo '<p class="admin-btn incorrect" > Passcode Incorrect</p>';} ?>
+</div>
+
+
+
+<div class="options-header">
+    <h1>Select Options</h1>
+    <?php if (isset($welcome)){echo '<h2> Hello ' . ucfirst($welcome) . ', welcome to Bonjour!</h2>';} ?>
+</div>
+<div class="btn-container">
+    <a class="btn btn-lg btn-main" href="/newVisitor" role="button">Guest Login</a>
+    <a class="btn btn-lg btn-main" href="/guestSignOut" role="button">Guest Logout</a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Admin Sign In</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/password">
+                    <label for="adminPasscode"></label>
+                    <input type="password" name="adminPasscode" id="adminPasscode">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-light">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>

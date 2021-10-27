@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require 'partials/layout/head.phtml'; ?>
+    <script defer src="js/adminPasscodeModal.js"></script>
+    <script defer src="js/adminPage.js"></script>
+    <script defer src="js/signOutByAdminModal.js"></script>
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+<main class="admin_page">
+    <div class="buttons-container">
+        <button class="btn btn-lg btn-main" id="visitorsIn"> Visitors Currently In</button>
+        <button class="btn btn-lg btn-main" id="visitorsOut"> Visitors History</button>
+        <button class="btn btn-lg btn-main" id="allVisitors"> All Visitors</button>
+        <button id="signOutAll" type="button"
+                class="btn btn-lg btn-main" data-toggle="modal"
+                data-target="#signOutAllModal  ">Sign Out All Visitors
+        </button>
+        <a class="btn btn-lg btn-main" href="/logout">LOG OUT</a>
+    </div>
+    <div>
+        <table>
+        <tr>
+            <th>NAME:</th>
+            <th>COMPANY:</th>
+            <th>DAY/TIME ENTERED:</th>
+            <th>CURRENTLY IN/SIGN OUT TIME:</th>
+            <?php echo \App\ViewHelpers\DisplayVisitorsViewHelper::displayVisitors($visitors); ?>
+        </tr>
+        </table>
+        <div class="btn-container-pagination">
+            <button class="hideElement btn btn-lg btn-pagination" id="previous"> < </button>
+            <button class="btn btn-lg btn-pagination" id="next"> > </button>
+        </div>
+
+
+    </div>
+</main>
+<!--modal-->
+
+    <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign Out</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/signOutByAdmin">
+                        <label for="hiddenInput"></label>
+                        <input id="hiddenInput" type="hidden" value="" name="name">
+                        <p>Are you sure you want to sign out for <span id="signOutName"></span>?</p>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        <button id="submitSignOut" type="submit" class="btn btn-light">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--modal sign Out ALl-->
+    <div>
+        <div class="modal fade" id="signOutAllModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Out</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/signOutAllByAdmin">
+                            <input id="hiddenInputAll" type="hidden" value="" name="name">
+                            <p>Are you sure you want to sign out All Visitors ?</p>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            <button id="submitSignOut" type="submit" class="btn btn-light">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php require 'partials/layout/footer.phtml'; ?>
+    </body>
+</html>
